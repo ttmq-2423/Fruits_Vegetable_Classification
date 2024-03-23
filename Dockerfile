@@ -4,10 +4,10 @@
 FROM python:3.9-slim
 
 # Copy the current directory contents into the container at /app
-COPY . /Fruits_Vegetable_Classification
+COPY . /app
 
 # Set the working directory in the container to /app
-WORKDIR /Fruits_Vegetable_Classification
+WORKDIR /app
 
 # Install necessary dependencies
 RUN apt-get update && apt-get install -y \
@@ -28,5 +28,5 @@ EXPOSE 80
 HEALTHCHECK CMD curl --fail http://localhost:80/_stcore/health
 
 # Set the default command to run the Streamlit app
-ENTRYPOINT ["streamlit", "run", "Fruits_Vegetable_Classification.py", "--server.port=80", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=80", "--server.address=0.0.0.0"]
 
